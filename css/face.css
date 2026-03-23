@@ -1,0 +1,169 @@
+html,
+body{ 
+    margin:0;
+    padding:0;
+    width:100vw;
+    height: 100vh;
+    overflow:hidden; /* impede rolagem da página*/
+    }
+    
+    *{
+        box-sizing:border-box;
+    }
+
+    .body-face {
+        font-family: Arial, Helvetica, sans-serif;
+        color:#ffffff;
+
+        background:
+        linear-gradient(135deg, rgba(229,9,20,0.18),rgba(0,0,0,0.95)),
+        radial-gradient(circle circle at top left,rgba(229,9,20,0,25),transparent 35%),
+        radial-gradient(circle at bottom right,rgba(229,9,0,18), transparent 30%),
+        #090909;
+         }
+
+        /* area central */
+
+        .pagina-face{
+                width: 100vw;
+                height:100vh;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                padding:0;
+                overflow:hidden;
+
+        }
+
+            /* janela principal*/
+            .face-container{
+                width: 95vw;
+                max-width: 400px;
+                min-width: 320px;
+                max-height:90vh ;
+                min-height:400px;
+                background: #000000;
+                border-radius:1px solid #1f1f1f;
+                border-radius:24px;
+                padding:18px 12px;
+                box-shadow: 0 20px 50px rgba(0,0,0,0.65);
+                text-align:center;
+                overflow-y: auto; /* rolagem apenas aqui*/
+        }
+
+            /* barra de rolagem */
+            .face-container::-webkit-scrollbar{
+                width: 6px;
+        }
+
+            .face-container::-webkit-scrollbar-thumb{
+                background:#e50914;
+                border: radius 10%;
+
+        }
+
+            /* logo */
+            .logo-face{
+                width: 100px;
+                margin: bottom 12px;
+
+        }
+
+           /* titulo */
+           .face-container h1{
+            margin:0 0 10px;
+            font-size:20px;
+        }
+
+           /* texto 0 auto 14px;*/
+           .face-texto{
+            margin: 0 auto 14px;
+            max-width: 320px;
+            color:#cfcfcf;
+            line-height: 85px;
+            font: size 13px;
+            
+        }
+
+        /* câmera */
+        .câmera-box{
+            position:relative;
+            width:100%;
+            max-width: 320px;
+            min-height: 220px;
+            margin:0 auto 14px;
+            border: radius 14px;
+            overflow:visible;
+            border:1px solid #2b2b2b;
+            background: #080808;
+
+        }
+
+        .câmera-box video{
+            display: block;
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+
+        }
+
+        .camera-box canvas,
+        #canvasface{
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            
+        }
+
+        /* moldura do rosto */
+        .moldura-rosto{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 180px;
+            height: 230px;
+            transform: translate(-50%,  50%);
+            border: 3px solid #e50914;
+            border-radius: 50%  /  50%; /* oval perfeito */
+            background:transparent;
+            pointer-events: none;
+            z-index: 2;
+            box-shadow: none;
+        }
+
+        /* Oculta qualquer retângulo de moldura se existir */
+        .moldura-rentangular{
+            display: none!important;
+        }
+
+        /*  botões  */
+
+        .acoes-face{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .botoes-face  {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 18px;
+
+        }
+
+        .btn-face  {
+            min-width: 170px;
+            height: 46px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            padding: 0  16px;
+        }

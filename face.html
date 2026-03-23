@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN facial - samamflix</title>title>
+    link rel="icon"type="image/png"href="imagens/logo.png">
+    link rel="stylesheet"href="css/face.css">
+    script defer src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
+    </head>
+<body> class="body-face">
+    <main class="body-face">
+     <main class="pagina-face">   
+        <section> class="face- container">
+            <img   src="imagens/logo.png"alt="samamflix" class="logo-face">
+            <h1>login com reconhecimento facial</h1>
+            <p class="face-texto">
+                posicione seu rosto dentro da moldura para cadastrar ou acessar sua conta com segurança.
+            </p>
+            <div class="camera-box">
+                <video id="videoface" autoplay muted playsinline></video>
+            <canvas id=" canvasface"></canvas>
+            <div class="moldura-rosto"></div>
+            </div>
+            <div id="=statusface" class="status-face">
+                aguardando ação.
+            </div>
+                <div class="botoes-face">
+                <button id="btnIniciarCamera" class="btn-face btn-primary">
+                📷 iniciar camera
+                </button>
+                <button id="btnCadastrarface" class="btn-face btn -sucsess" style="display:none;">
+                😍 cadastrar o Rosto
+                </button>
+                <button id="btnEntrarFace" class="btn-face btn-info"style="display:none">
+                    ❤️ Entrar com  rosto
+                </button>
+                </div>
+                <div class="term-face" id="termosFacewrap"style="display:none">
+                <label>
+                <input type="checkbox"id="aceitotermosFace" />
+                Estou de acordo com o armazenamento de dados biométricos  (reconhecimento facial)e políticas de privacidade.
+                </label>
+                </div>
+                <a href="login.html" class="voltar-login">
+                    voltar para o login
+                </a>
+                </section>
+                </main>
+                <script type="module" src="js/face-auth.js"></script>
+                </body>
+                </html>
+                    
+                
+            
+
+                
+
+            
+        
+    
+
+
+
+
+    
