@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pessoas - BRASFLIX</title>
+  <link rel="icon" href="imagens/logo.png">
+  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="stylesheet" href="css/chatbot.css">
+  <link rel="stylesheet" href="css/topbar.css">
+  <link rel="stylesheet" href="css/users.css">
+</head>
+<body>
+  <main class="users-page">
+    <section class="users-hero">
+      <p class="users-kicker">Comunidade</p>
+      <h1>Encontre pessoas para seguir e conversar</h1>
+      <p>Descubra usuários com gostos parecidos, abra perfis públicos e inicie conversas com um clique.</p>
+      <div class="users-search-wrap">
+        <input id="usersSearch" type="search" placeholder="Buscar por nome, username ou e-mail">
+      </div>
+    </section>
+
+    <section class="users-section">
+      <div class="users-section-header">
+        <h2>Usuários em destaque</h2>
+        <span id="usersCount"></span>
+      </div>
+      <div id="usersGrid" class="users-grid"></div>
+      <div id="usersEmpty" class="users-empty">Nenhum usuário encontrado.</div>
+    </section>
+  </main>
+
+  <script type="module" src="js/topbar.js"></script>
+  <script type="module" src="js/users.js"></script>
+  <script type="module" src="js/user-chat-widget.js"></script>
+  <script type="module" src="js/chatbot.js"></script>
+</body>
+</html>
