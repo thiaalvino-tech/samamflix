@@ -1,1 +1,112 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard | BRASFLIX</title>
+
+<link rel="icon" href="../imagens/logo.png">
+
+<link rel="stylesheet" href="../css/estilo.css">
+<link rel="stylesheet" href="../css/admin.css">
+
+    <link rel="stylesheet" href="../css/topbar.css">
+</head>
+
+<body class="body-admin">
+
+<header class="admin-header">
+
+<div class="logo">
+<a href="../index.html">
+<img src="../imagens/logo.png">
+</a>
+</div>
+
+<nav class="admin-nav">
+
+<a href="dashboard.html" class="ativo">Dashboard</a>
+<a href="videos.html">Vídeos</a>
+<a href="categorias.html">Categorias</a>
+<a href="comentarios.html">Comentários</a>
+<a href="analytics.html">Analytics</a>
+
+</nav>
+
+<button class="login">Sair</button>
+
+</header>
+
+<main class="pagina-admin">
+
+<section class="admin-topo">
+
+<div class="admin-topo-info">
+
+<span class="admin-tag">Administração</span>
+
+<h1>Painel da plataforma</h1>
+
+<p>
+Aqui você poderá acompanhar métricas gerais da BRASFLIX
+e administrar conteúdos da plataforma.
+</p>
+
+</div>
+
+</section>
+
+<section class="admin-dashboard-cards">
+
+<div class="dashboard-card">
+<h3>Usuários</h3>
+<p id="totalUsuarios"></p>
+</div>
+
+<div class="dashboard-card">
+<h3>Vídeos</h3>
+<p id="totalVideos"></p>
+</div>
+
+<div class="dashboard-card">
+<h3>Comentários</h3>
+<p id="totalComentarios"></p>
+</div>
+
+<div class="dashboard-card">
+<h3>Visualizações</h3>
+<p id="totalViews"></p>
+</div>
+
+</section>
+
+<section class="admin-bloco">
+
+<h2>Últimos vídeos publicados</h2>
+
+<div class="admin-lista-videos" id="ultimosVideos"></div>
+
+<div class="estado-vazio-admin">
+
+<div class="estado-vazio-admin-icone">📺</div>
+
+<h3>Nenhum vídeo publicado ainda</h3>
+
+<p>
+Os vídeos mais recentes aparecerão aqui quando forem cadastrados.
+</p>
+
+</div>
+
+</section>
+
+</main>
+<script type="module" src="../js/admin-dashboard.js"></script>
+<script type="module" src="../js/admin-auth.js"></script>
+
+    <script type="module" src="../js/topbar.js"></script>
+</body>
+</html>
