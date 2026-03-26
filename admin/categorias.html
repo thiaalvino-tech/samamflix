@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Categorias | Admin BRASFLIX</title>
+
+<link rel="icon" href="../imagens/logo.png">
+
+<link rel="stylesheet" href="../css/estilo.css">
+<link rel="stylesheet" href="../css/admin.css">
+
+    <link rel="stylesheet" href="../css/topbar.css">
+</head>
+
+<body class="body-admin">
+
+<header class="admin-header">
+
+<div class="logo">
+<a href="../index.html">
+<img src="../imagens/logo.png">
+</a>
+</div>
+
+<nav class="admin-nav">
+
+<a href="dashboard.html">Dashboard</a>
+<a href="videos.html">Vídeos</a>
+<a href="categorias.html" class="ativo">Categorias</a>
+<a href="comentarios.html">Comentários</a>
+<a href="analytics.html">Analytics</a>
+
+</nav>
+
+<button class="login">Sair</button>
+
+</header>
+
+<main class="pagina-admin">
+
+<section class="admin-topo">
+
+<div class="admin-topo-info">
+
+<span class="admin-tag">Administração</span>
+
+<h1>Gerenciamento de categorias</h1>
+
+<p>
+Crie categorias para organizar os vídeos da plataforma.
+</p>
+
+</div>
+
+</section>
+
+<section class="admin-bloco">
+
+<h2>Nova categoria</h2>
+
+<form class="admin-formulario">
+
+<div class="grupo-admin">
+
+<label>Nome da categoria</label>
+
+<input type="text" placeholder="Ex: Inteligência Artificial">
+
+</div>
+
+<div class="admin-botoes">
+
+<button class="btn-admin-principal">
+Criar categoria
+</button>
+
+</div>
+
+</form>
+
+</section>
+
+<section class="admin-bloco">
+
+<h2>Categorias existentes</h2>
+
+<div class="categorias-admin" id="listaCategorias"></div>
+
+<div class="estado-vazio-admin">
+
+<div class="estado-vazio-admin-icone">📂</div>
+
+<h3>Nenhuma categoria criada</h3>
+
+</div>
+
+</section>
+
+</main>
+
+<script type="module" src="../js/admin-categorias.js"></script>
+<script type="module" src="../js/admin-auth.js"></script>
+    <script type="module" src="../js/topbar.js"></script>
+</body>
+</html>
