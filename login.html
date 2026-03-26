@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - BRASFLIX</title>
+    <link rel="icon" type="image/png" href="imagens/logo.png">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+</head>
+<body class="body-login">
+
+    <main class="pagina-login">
+
+        <section class="painel-animacao">
+            <div class="animacao-conteudo">
+                <img src="imagens/logo.png" alt="BRASFLIX" class="logo-animacao">
+            </div>
+        </section>
+
+        <section class="painel-formulario">
+            <div class="login-box">
+
+                <div class="topo-login">
+                    <img src="imagens/logo.png" alt="BRASFLIX" class="logo-login">
+                </div>
+
+                <div class="abas-login">
+                    <button class="aba-btn ativo" data-aba="login" type="button">Entrar</button>
+                    <button class="aba-btn" data-aba="cadastro" type="button">Cadastrar</button>
+                </div>
+
+                <!-- LOGIN -->
+                <section class="aba-conteudo ativo" id="aba-login">
+                    <h2>Entrar na conta</h2>
+
+                    <form class="formulario" id="form-login">
+                        <div class="grupo-campo">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" placeholder="Digite seu email">
+                        </div>
+
+                        <div class="grupo-campo">
+                            <label for="login-senha">Senha</label>
+                            <input type="password" id="login-senha" placeholder="Digite sua senha">
+                        </div>
+
+                        <button type="submit" class="btn-principal">Entrar</button>
+                    </form>
+
+                    <div class="divisor"><span>ou</span></div>
+
+                    <button class="btn-google" id="btnGoogle" type="button">
+                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                        Entrar com Google
+                    </button>
+
+                    <button class="btn-secundario btn-face" id="irParaFace" type="button">
+                        Reconhecimento facial
+                    </button>
+
+                    <button class="btn-link-recuperar" id="abrirRecuperar" type="button">
+                        Recuperar senha
+                    </button>
+
+                    <div class="recuperar-box" id="recuperarBox">
+                        <h3>Recuperar acesso</h3>
+
+                        <form class="formulario" id="form-recuperar">
+                            <div class="grupo-campo">
+                                <label for="rec-email">Email</label>
+                                <input type="email" id="rec-email" placeholder="Digite seu email">
+                            </div>
+
+                            <button type="button" class="btn-principal" id="btnRecuperarEmail">
+                                Enviar recuperação por email
+                            </button>
+
+                            <div class="divisor"><span>ou</span></div>
+
+                            <div class="grupo-campo">
+                                <label for="rec-telefone">Telefone</label>
+                                <input type="tel" id="rec-telefone" placeholder="(00) 00000-0000">
+                            </div>
+
+                            <button type="button" class="btn-secundario" id="btnRecuperarTelefone">
+                                Enviar código para o telefone
+                            </button>
+
+                            <div class="phone-recovery-step" id="phoneRecoveryStepCodigo">
+                                <div class="grupo-campo">
+                                    <label for="rec-codigo">Código SMS</label>
+                                    <input type="text" id="rec-codigo" placeholder="Digite o código recebido">
+                                </div>
+
+                                <button type="button" class="btn-principal" id="btnConfirmarCodigoTelefone">
+                                    Confirmar código e enviar recuperação
+                                </button>
+                            </div>
+
+                            <div id="recaptcha-container"></div>
+                            <p class="phone-recovery-status" id="phoneRecoveryStatus"></p>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- CADASTRO -->
+                <section class="aba-conteudo" id="aba-cadastro">
+                    <h2>Criar conta</h2>
+
+                    <form class="formulario" id="form-cadastro">
+                        <div class="upload-foto">
+                            <label for="fotoPerfil" class="foto-preview">
+                                <span>Adicionar foto</span>
+                            </label>
+                            <input type="file" id="fotoPerfil" accept="image/*">
+                        </div>
+
+                        <div class="grupo-campo">
+                            <label for="nome-completo">Nome completo</label>
+                            <input type="text" id="nome-completo" placeholder="Digite seu nome completo">
+                        </div>
+
+                        <div class="linha-2">
+                            <div class="grupo-campo">
+                                <label for="cpf">CPF</label>
+                                <input type="text" id="cpf" placeholder="000.000.000-00">
+                            </div>
+
+                            <div class="grupo-campo">
+                                <label for="data-nascimento">Data de nascimento</label>
+                                <input type="text" id="data-nascimento" placeholder="Selecione a data">
+                            </div>
+                        </div>
+
+                        <div class="linha-2">
+                            <div class="grupo-campo">
+                                <label for="cadastro-email">Email</label>
+                                <input type="email" id="cadastro-email" placeholder="Digite seu email">
+                            </div>
+
+                            <div class="grupo-campo">
+                                <label for="telefone">Telefone</label>
+                                <input type="tel" id="telefone" placeholder="(00) 00000-0000">
+                            </div>
+                        </div>
+
+                        <div class="grupo-campo">
+                            <label for="cep">CEP</label>
+                            <input type="text" id="cep" placeholder="00000-000">
+                        </div>
+
+                        <div class="grupo-campo">
+                            <label for="endereco">Endereço</label>
+                            <input type="text" id="endereco" placeholder="Rua, avenida, etc.">
+                        </div>
+
+                        <div class="linha-2">
+                            <div class="grupo-campo">
+                                <label for="bairro">Bairro</label>
+                                <input type="text" id="bairro" placeholder="Bairro">
+                            </div>
+
+                            <div class="grupo-campo">
+                                <label for="cidade">Cidade</label>
+                                <input type="text" id="cidade" placeholder="Cidade">
+                            </div>
+                        </div>
+
+                        <div class="linha-2">
+                            <div class="grupo-campo">
+                                <label for="estado">Estado</label>
+                                <input type="text" id="estado" placeholder="UF">
+                            </div>
+
+                            <div class="grupo-campo">
+                                <label for="numero">Número</label>
+                                <input type="text" id="numero" placeholder="Número">
+                            </div>
+                        </div>
+
+                        <div class="linha-2">
+                            <div class="grupo-campo">
+                                <label for="senha-cadastro">Senha</label>
+                                <input type="password" id="senha-cadastro" placeholder="Crie uma senha" autocomplete="new-password">
+                                <small id="senha-requisitos" style="color:#e50914; font-size:12px; margin-top:2px;">A senha deve conter pelo menos 8 caracteres, incluindo letra maiúscula, minúscula, número e caractere especial.</small>
+                            </div>
+
+                            <div class="grupo-campo">
+                                <label for="confirmar-senha">Confirmar senha</label>
+                                <input type="password" id="confirmar-senha" placeholder="Confirme a senha">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-principal">Cadastrar</button>
+                    </form>
+                </section>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script type="module" src="js/auth.js"></script>
+
+</body>
+</html>
