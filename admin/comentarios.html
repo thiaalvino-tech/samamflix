@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Comentários | Admin BRASFLIX</title>
+
+<link rel="icon" href="../imagens/logo.png">
+
+<link rel="stylesheet" href="../css/estilo.css">
+<link rel="stylesheet" href="../css/admin.css">
+
+    <link rel="stylesheet" href="../css/topbar.css">
+</head>
+
+<body class="body-admin">
+
+<header class="admin-header">
+
+<div class="logo">
+<a href="../index.html">
+<img src="../imagens/logo.png">
+</a>
+</div>
+
+<nav class="admin-nav">
+
+<a href="dashboard.html">Dashboard</a>
+<a href="videos.html">Vídeos</a>
+<a href="categorias.html">Categorias</a>
+<a href="comentarios.html" class="ativo">Comentários</a>
+<a href="analytics.html">Analytics</a>
+
+</nav>
+
+<button class="login">Sair</button>
+
+</header>
+
+<main class="pagina-admin">
+
+<section class="admin-topo">
+
+<div class="admin-topo-info">
+
+<span class="admin-tag">Moderação</span>
+
+<h1>Comentários da plataforma</h1>
+
+<p>
+Gerencie e modere comentários feitos pelos usuários.
+</p>
+
+</div>
+
+</section>
+
+<section class="admin-bloco">
+
+<h2>Lista de comentários</h2>
+
+<div class="lista-comentarios-admin" id="listaComentarios"></div>
+
+<div class="estado-vazio-admin">
+
+<div class="estado-vazio-admin-icone">💬</div>
+
+<h3>Nenhum comentário ainda</h3>
+
+</div>
+
+</section>
+
+</main>
+
+<script type="module" src="../js/admin-comentarios.js"></script>
+<script type="module" src="../js/admin-auth.js"></script>
+    <script type="module" src="../js/topbar.js"></script>
+</body>
+</html>
