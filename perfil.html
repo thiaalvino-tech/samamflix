@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfil - BRASFLIX</title>
+<link rel="icon" href="imagens/logo.png">
+<link rel="stylesheet" href="css/estilo.css">
+<link rel="stylesheet" href="css/chatbot.css">
+<link rel="stylesheet" href="css/topbar.css">
+<link rel="stylesheet" href="css/perfil.css">
+</head>
+<body>
+<main class="perfil-page">
+  <section class="perfil-hero-card">
+    <div class="perfil-hero-left">
+      <img id="perfilAvatar" class="perfil-avatar" src="imagens/logo.png" alt="Avatar">
+      <div>
+        <p class="perfil-badge">Perfil público</p>
+        <h1 id="perfilNome">Usuário</h1>
+        <p id="perfilUsername" class="perfil-username">@usuario</p>
+        <p id="perfilEmail" class="perfil-email"></p>
+        <p id="perfilBio" class="perfil-bio">Sem bio por enquanto.</p>
+      </div>
+    </div>
+    <div class="perfil-hero-actions">
+      <button id="btnFollowPerfil" class="perfil-pill-btn" type="button">Seguir</button>
+      <button id="btnConversarPerfil" class="perfil-pill-btn primary" type="button">Conversar</button>
+      <button id="btnAbrirMensagens" class="perfil-pill-btn" type="button">Abrir mensagens</button>
+    </div>
+  </section>
+
+  <section class="perfil-stats-grid">
+    <article class="perfil-stat-card"><span>Seguidores</span><strong id="perfilSeguidores">0</strong></article>
+    <article class="perfil-stat-card"><span>Seguindo</span><strong id="perfilSeguindo">0</strong></article>
+    <article class="perfil-stat-card"><span>Conversas</span><strong id="perfilConversas">0</strong></article>
+    <article class="perfil-stat-card"><span>Favoritos</span><strong id="totalFavoritos">0</strong></article>
+  </section>
+
+  <section class="perfil-layout-grid">
+    <section class="perfil-main-col">
+      <div class="perfil-panel">
+        <div class="perfil-panel-header"><h2>Sugestões para seguir</h2><a href="usuarios.html">Ver comunidade</a></div>
+        <div id="sugestoesPerfil" class="social-list"></div>
+      </div>
+      <div class="perfil-panel">
+        <div class="perfil-panel-header"><h2>Histórico recente</h2></div>
+        <div class="social-cards-grid" id="historicoPerfil"></div>
+      </div>
+      <div class="perfil-panel">
+        <div class="perfil-panel-header"><h2>Favoritos recentes</h2></div>
+        <div class="social-cards-grid" id="favoritosPerfil"></div>
+      </div>
+    </section>
+    <aside class="perfil-side-col">
+      <div class="perfil-panel"><div class="perfil-panel-header"><h2>Seguidores</h2></div><div id="listaSeguidores" class="social-list"></div></div>
+      <div class="perfil-panel"><div class="perfil-panel-header"><h2>Seguindo</h2></div><div id="listaSeguindo" class="social-list"></div></div>
+      <div class="perfil-panel"><div class="perfil-panel-header"><h2>Categorias favoritas</h2></div><div id="categoriasPreferidas" class="chips-wrap"></div></div>
+    </aside>
+  </section>
+</main>
+<script type="module" src="js/topbar.js"></script>
+<script type="module" src="js/perfil.js"></script>
+<script type="module" src="js/user-chat-widget.js"></script>
+<script type="module" src="js/chatbot.js"></script>
+</body>
+</html>
