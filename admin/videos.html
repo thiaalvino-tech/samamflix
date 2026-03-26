@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Vídeos | BRASFLIX</title>
+    <link rel="icon" type="image/png" href="../imagens/logo.png">
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/topbar.css">
+</head>
+<body class="body-admin">
+
+    <header class="admin-header">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="BRASFLIX">
+            </a>
+        </div>
+
+        <nav class="admin-nav">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="videos.html" class="ativo">Vídeos</a>
+            <a href="categorias.html">Categorias</a>
+            <a href="comentarios.html">Comentários</a>
+            <a href="analytics.html">Analytics</a>
+        </nav>
+
+        <button class="login">Sair</button>
+    </header>
+
+    <main class="pagina-admin">
+
+        <section class="admin-topo">
+            <div class="admin-topo-info">
+                <span class="admin-tag">Painel Administrativo</span>
+                <h1>Gerenciamento de vídeos</h1>
+                <p>
+                    Esta área permite cadastrar, organizar e destacar vídeos da BRASFLIX.
+                    O upload envia a thumbnail e o vídeo para o Cloudinary e salva os dados no Firebase.
+                </p>
+            </div>
+        </section>
+
+        <section class="admin-bloco">
+            <div class="admin-bloco-topo">
+                <h2>Cadastrar novo vídeo</h2>
+            </div>
+
+            <form class="admin-formulario" id="formVideo" data-admin-video-form>
+
+                <div class="admin-status-box" id="adminVideosStatus">Preencha os campos e clique em salvar vídeo.</div>
+
+                <div class="linha-admin">
+                    <div class="grupo-admin">
+                        <label for="tituloVideo">Título do vídeo</label>
+                        <input type="text" id="tituloVideo" placeholder="Digite o título do vídeo">
+                    </div>
+
+                    <div class="grupo-admin">
+                        <label for="categoriaVideo">Categoria</label>
+                        <select id="categoriaVideo">
+                            <option value="">Selecione uma categoria</option>
+                            <option value="Tecnologia">Tecnologia</option>
+                            <option value="IA">IA</option>
+                            <option value="Programação">Programação</option>
+                            <option value="Curiosidades">Curiosidades</option>
+                            <option value="Educação">Educação</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grupo-admin">
+                    <label for="descricaoVideo">Descrição</label>
+                    <textarea id="descricaoVideo" placeholder="Digite a descrição do vídeo"></textarea>
+                </div>
+
+                <div class="linha-admin">
+                    <div class="grupo-admin">
+                        <label for="duracaoVideo">Duração</label>
+                        <input type="text" id="duracaoVideo" placeholder="Ex: 12min 30s">
+                    </div>
+
+                    <div class="grupo-admin">
+                        <label for="autorVideo">Autor / Canal</label>
+                        <input type="text" id="autorVideo" placeholder="Nome do autor ou canal">
+                    </div>
+                </div>
+
+                <div class="linha-admin">
+                    <div class="grupo-admin">
+                        <label for="thumbnailFile">Thumbnail</label>
+                        <input type="file" id="thumbnailFile" accept="image/*">
+                        <div class="admin-preview-box" id="previewThumbnailAdmin">
+                            <span class="admin-preview-vazio">A prévia da thumbnail aparecerá aqui.</span>
+                        </div>
+                    </div>
+
+                    <div class="grupo-admin">
+                        <label for="videoFile">Arquivo de vídeo</label>
+                        <input type="file" id="videoFile" accept="video/*">
+                        <div class="admin-preview-box" id="previewArquivoVideoAdmin">
+                            <span class="admin-preview-vazio">A prévia do vídeo aparecerá aqui.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grupo-admin">
+                    <label for="tagsVideo">Tags</label>
+                    <input type="text" id="tagsVideo" placeholder="Ex: tecnologia, IA, tutorial, dados">
+                </div>
+
+                <div class="admin-opcoes">
+                    <label class="check-admin">
+                        <input type="checkbox" id="videoDestaque">
+                        <span>Marcar como destaque</span>
+                    </label>
+
+                    <label class="check-admin">
+                        <input type="checkbox" id="videoLancamento">
+                        <span>Marcar como lançamento</span>
+                    </label>
+
+                    <label class="check-admin">
+                        <input type="checkbox" id="videoEmAlta">
+                        <span>Marcar como em alta</span>
+                    </label>
+
+                    <label class="check-admin">
+                        <input type="checkbox" id="videoTopSemanal">
+                        <span>Marcar como top semanal</span>
+                    </label>
+                </div>
+
+                <div class="admin-botoes">
+                    <button type="submit" class="btn-admin-principal" id="btnSalvarVideo">Salvar vídeo</button>
+                    <button type="reset" class="btn-admin-secundario" id="btnLimparVideo">Limpar formulário</button>
+                </div>
+
+            </form>
+        </section>
+
+        <section class="admin-bloco">
+            <div class="admin-bloco-topo">
+                <h2>Vídeos cadastrados</h2>
+                <span class="admin-contador" id="contadorVideosAdmin">0 vídeos</span>
+            </div>
+
+            <div class="admin-lista-videos" id="listaVideosAdmin"></div>
+
+            <div class="estado-vazio-admin" id="estadoVazioVideosAdmin">
+                <div class="estado-vazio-admin-icone">🎬</div>
+                <h3>Nenhum vídeo cadastrado ainda</h3>
+                <p>
+                    Quando o admin cadastrar vídeos, eles aparecerão aqui para edição,
+                    organização e integração com a home da BRASFLIX.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <script type="module" src="../js/admin-videos.js"></script>
+    <script type="module" src="../js/admin-auth.js"></script>
+    <script type="module" src="../js/topbar.js"></script>
+</body>
+</html>
