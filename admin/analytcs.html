@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - BRASFLIX</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="imagens/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="imagens/logo.png">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/analytics.css">
+    <link rel="stylesheet" href="css/gestos.css">
+    <link rel="stylesheet" href="css/voz.css">
+    <link rel="stylesheet" href="css/topbar.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="imagens/logo.png" alt="BRASFLIX">
+            </a>
+        </div>
+
+        <nav class="nav">
+            <select>
+                <option>Português</option>
+                <option>English</option>
+                <option>Español</option>
+            </select>
+
+            <button class="login">Sair</button>
+        </nav>
+    </header>
+
+    <main class="pagina-analytics">
+
+        <section class="analytics-topo">
+            <div class="analytics-topo-info">
+                <span class="analytics-tag">Analytics</span>
+                <h1>Tendências e comportamento</h1>
+                <p>
+                    Esta área mostrará tendências da plataforma, conteúdos em alta,
+                    top semanal, categorias mais acessadas e o mapeamento do próprio usuário
+                    quando conectarmos a BRASFLIX ao Firebase.
+                </p>
+            </div>
+        </section>
+
+        <section class="analytics-resumo">
+            <div class="card-metrica">
+                <h3>Tempo assistido</h3>
+                <p id="metricaTempoAssistido"></p>
+            </div>
+
+            <div class="card-metrica">
+                <h3>Vídeos vistos</h3>
+                <p id="metricaVideosVistos"></p>
+            </div>
+
+            <div class="card-metrica">
+                <h3>Favoritos salvos</h3>
+                <p id="metricaFavoritos"></p>
+            </div>
+
+            <div class="card-metrica">
+                <h3>Taxa de conclusão</h3>
+                <p id="metricaConclusao"></p>
+            </div>
+
+            <div class="card-metrica">
+                <h3>Emoção média</h3>
+                <p id="metricaEmocional"></p>
+            </div>
+        </section>
+
+        <section class="analytics-bloco">
+            <div class="analytics-bloco-topo">
+                <h2>Tendências gerais</h2>
+            </div>
+
+            <div class="carrossel" id="tendenciasGerais"></div>
+
+            <div class="estado-vazio" id="estadoVazioTendencias">
+                <div class="estado-vazio-icone">📈</div>
+                <h3>Nenhuma tendência disponível ainda</h3>
+                <p>
+                    Quando houver dados suficientes na plataforma, esta área mostrará
+                    os conteúdos em destaque e os vídeos em maior crescimento.
+                </p>
+            </div>
+        </section>
+
+        <section class="analytics-bloco">
+            <div class="analytics-bloco-topo">
+                <h2>Top semanal</h2>
+            </div>
+
+            <div class="carrossel" id="topSemanalAnalytics"></div>
+
+            <div class="estado-vazio" id="estadoVazioTopSemanal">
+                <div class="estado-vazio-icone">🏆</div>
+                <h3>Top Semanal</h3>
+                <p>
+                    A BRASFLIX mostrará os vídeos com melhor desempenho da semana
+                    quando os dados forem carregados do Firebase.
+                </p>
+            </div>
+        </section>
+
+        <section class="analytics-bloco">
+            <div class="analytics-bloco-topo">
+                <h2>Mais assistidos</h2>
+            </div>
+
+            <div class="carrossel-ranking" id="maisAssistidosRanking"></div>
+
+            <div class="estado-vazio" id="estadoVazioMaisAssistidos">
+                <div class="estado-vazio-icone">🎬</div>
+                <h3>Os vídeos mais assistidos aparecerão aqui</h3>
+                <p>
+                    Quando conectarmos os dados reais da plataforma, este bloco
+                    mostrará o ranking dos conteúdos mais vistos pelos usuários.
+                </p>
+            </div>
+        </section>
+
+        <section class="analytics-bloco">
+            <div class="analytics-bloco-topo">
+                <h2>Tendências por categoria</h2>
+            </div>
+
+            <div class="categorias-analytics" id="categoriasAnalytics"></div>
+
+            <div class="estado-vazio estado-vazio-menor" id="estadoVazioCategoriasAnalytics">
+                <p>Ainda não há categorias suficientes para gerar tendências.</p>
+            </div>
+        </section>
+
+        <section class="analytics-bloco">
+            <div class="analytics-bloco-topo">
+                <h2>Histórico emocional</h2>
+            </div>
+
+            <div class="filtro-emocional">
+                <label>Filtrar por vídeo:
+                    <input id="filtroVideoId" type="text" placeholder="videoId" />
+                </label>
+
+                <label>Filtrar por usuário:
+                    <select id="filtroUserId"></select>
+                </label>
+
+                <button id="btnFiltrarEmocao" class="btn-principal" type="button">Aplicar filtro</button>
+                <button id="btnExportCSV" class="btn-acao" type="button">Exportar CSV</button>
+            </div>
+
+            <div class="estado-vazio" id="estadoVazioHistoricoEmocional">
+                <div class="estado-vazio-icone">🧠</div>
+                <h3>Nenhum dado emocional ainda</h3>
+                <p>A análise emocional destaca padrões de sentimento ao lado do tempo.</p>
+            </div>
+
+            <div class="historico-emocional" id="historicoEmocional"></div>
+
+            <div class="emotion-plot">
+                <h3>Gráfico de emoção x tempo</h3>
+                <canvas id="emotionTimelineChart" width="1000" height="300"></canvas>
+            </div>
+
+            <div class="emotion-heatmap" id="emotionHeatmap"></div>
+
+            <div class="time-heatmap">
+                <h3>Heatmap temporal 2D (intervalos de 10s)</h3>
+                <div class="time-heatmap-grid" id="timeHeatmap"></div>
+            </div>
+        </section>
+
+        <section class="analytics-bloco">
+            <div class="analytics-bloco-topo">
+                <h2>Mapa do usuário</h2>
+            </div>
+
+            <div class="grid-mapa-usuario">
+                <div class="mapa-usuario-card">
+                    <h3>Horário mais ativo</h3>
+                    <p id="horarioMaisAtivo"></p>
+                </div>
+
+                <div class="mapa-usuario-card">
+                    <h3>Categoria dominante</h3>
+                    <p id="categoriaMaisVista"></p>
+                </div>
+
+                <div class="mapa-usuario-card">
+                    <h3>Formato preferido</h3>
+                    <p id="formatoPreferidoUsuario"></p>
+                </div>
+
+                <div class="mapa-usuario-card">
+                    <h3>Nível de engajamento</h3>
+                    <p id="nivelEngajamentoUsuario"></p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>
+            © 2026 BRASFLIX - DESENVOLVIDO POR
+            <a href="https://www.instagram.com/pedro__srodrigues" target="_blank">PEDRO SIMÃO</a>
+        </p>
+    </footer>
+
+    <div class="cookieBox" id="cookies">
+        <p>Utilizamos cookies para melhorar sua experiência na plataforma.</p>
+        <button onclick="aceitarCookies()">Aceitar</button>
+    </div>
+
+    <div class="chatbot-widget" id="chatbot-widget">
+        <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Abrir chat com PedrIA">💭</button>
+
+        <div class="chatbot-window" id="chatbot-window">
+            <header class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <div class="chatbot-avatar">😎</div>
+                    <div>
+                        <div class="chatbot-title">PedrIA</div>
+                        <div class="chatbot-subtitle">Assistente do Brasflix</div>
+                    </div>
+                </div>
+                <button class="chatbot-close" id="chatbot-close" aria-label="Fechar chat">❌</button>
+            </header>
+
+            <div class="chatbot-messages" id="chatbot-messages"></div>
+
+            <form class="chatbot-form" id="chatbot-form">
+                <input
+                    type="text"
+                    id="chatbot-input"
+                    class="chatbot-input"
+                    placeholder="Digite sua pergunta..."
+                    autocomplete="on"
+                    required
+                >
+                <button type="submit" class="chatbot-send-btn">🎬</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="user-chat-widget" id="user-chat-widget">
+        <button id="user-chat-toggle" class="user-chat-toggle" aria-label="Abrir chat de usuários">💬</button>
+        <div id="user-chat-panel" class="user-chat-panel" aria-hidden="true">
+            <header class="user-chat-header">
+                <div>
+                    <div class="user-chat-title">Chat com Usuários</div>
+                    <div class="user-chat-subtitle">Toque em um contato para iniciar</div>
+                </div>
+                <button id="user-chat-close" class="user-chat-close" aria-label="Fechar">✕</button>
+            </header>
+            <input id="user-chat-search" class="user-chat-search" type="search" placeholder="Buscar contato..." />
+            <div id="user-chat-contacts" class="user-chat-contacts"></div>
+            <div id="user-chat-conversation" class="user-chat-conversation">
+                <div id="user-chat-conversation-header" class="user-chat-conversation-header">Selecione um contato</div>
+                <div id="user-chat-messages" class="user-chat-messages"></div>
+                <form id="user-chat-send-form" class="user-chat-send-form">
+                    <input id="user-chat-input" class="user-chat-input" type="text" placeholder="Digite sua mensagem..." autocomplete="off" />
+                    <button type="submit" class="user-chat-send-btn" aria-label="Enviar">➤</button>
+                </form>
+            </div>
+            <div id="user-chat-status" class="user-chat-status">Aguardando login...</div>
+        </div>
+        <div id="user-chat-toasts" class="user-chat-toasts" aria-live="polite" aria-atomic="true"></div>
+    </div>
+
+    <div class="voice-widget minimizado" id="voiceWidget">
+        <div class="voice-panel">
+            <div class="voice-header">
+                <div class="voice-header-info">
+                    <div class="voice-avatar">🎙️</div>
+                    <div>
+                        <div class="voice-title">Assistente por voz</div>
+                        <div class="voice-subtitle">Comandos e leitura da PedrIA</div>
+                    </div>
+                </div>
+
+                <button class="voice-minimizar" id="voiceMinimizar" type="button">−</button>
+            </div>
+
+            <div class="voice-body">
+                <div class="voice-status" id="voiceStatus"></div>
+
+                <div class="voice-actions">
+                    <button class="voice-btn voice-btn-primary" id="btnOuvirComando" type="button">
+                        Ouvir comando
+                    </button>
+
+                    <button class="voice-btn voice-btn-secondary" id="btnLerResposta" type="button">
+                        Ler resposta
+                    </button>
+                </div>
+
+                <div class="voice-help">
+                    <h4>Exemplos</h4>
+                    <p>
+                        Diga: “abrir perfil”, “abrir favoritos”, “abrir analytics”
+                        ou envie perguntas para a PedrIA por voz.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <button class="voice-toggle" id="voiceToggle" type="button">🎙️</button>
+    </div>
+
+    <button class="gestos-indicador oculto" id="gestosIndicador" type="button" aria-label="Gestos ativos">
+        <span class="gestos-indicador-ponto"></span>
+        <span class="gestos-indicador-texto">Gestos ativos</span>
+    </button>
+
+    <div class="gestos-widget minimizado" id="gestosWidget">
+        <div class="gestos-panel">
+
+            <div class="gestos-header">
+                <div class="gestos-header-info">
+                    <div class="gestos-avatar">🖐️</div>
+                    <div>
+                        <div class="gestos-title">Controle por gestos</div>
+                        <div class="gestos-subtitle">Rodando em segundo plano</div>
+                    </div>
+                </div>
+
+                <button class="gestos-minimizar" id="gestosMinimizar" type="button">−</button>
+            </div>
+
+            <div class="gestos-info">
+                <p id="gestoDetectado">Gestos desativados</p>
+
+                <div class="gestos-panel-acoes">
+                    <label class="switch-gestos" for="ativarGestos" style="display: flex; align-items: center; gap: 8px;">
+                        <input type="checkbox" id="ativarGestos">
+                        <span class="slider-gestos"></span>
+                        <span>Ativar gestos</span>
+                    </label>
+
+                    <button id="desativarGestos" class="btn-gestos-perigo" type="button">
+                        Desativar
+                    </button>
+
+                    <button id="abrirTutorialPainel" class="btn-gestos-secundario" type="button">
+                        Tutorial
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gestos-processamento-oculto" aria-hidden="true">
+        <video id="webcamGestos" autoplay playsinline muted></video>
+    </div>
+
+    <div class="modal-tutorial oculto" id="modalTutorialGestos">
+        <div class="modal-tutorial-overlay" id="fecharTutorialOverlay"></div>
+
+        <div class="modal-tutorial-box">
+            <button class="modal-tutorial-fechar" id="fecharTutorialGestos" type="button">✕</button>
+
+            <h3>Tutorial de gestos</h3>
+            <p class="modal-tutorial-subtitulo">Teste os gestos ao vivo.</p>
+
+            <div class="tutorial-preview">
+                <video id="tutorialWebcamGestos" autoplay playsinline muted></video>
+                <canvas id="tutorialCanvasGestos"></canvas>
+                <div class="tutorial-status" id="tutorialStatusGesto">Faça um gesto para testar</div>
+            </div>
+
+            <div class="tutorial-grid">
+                <div class="tutorial-item">
+                    <div class="tutorial-icone">👍</div>
+                    <div>
+                        <strong>Polegar para cima</strong>
+                        <span>Curtir vídeo</span>
+                    </div>
+                </div>
+
+                <div class="tutorial-item">
+                    <div class="tutorial-icone">👎</div>
+                    <div>
+                        <strong>Polegar para baixo</strong>
+                        <span>Descurtir vídeo</span>
+                    </div>
+                </div>
+
+                <div class="tutorial-item">
+                    <div class="tutorial-icone">✋</div>
+                    <div>
+                        <strong>Mão aberta</strong>
+                        <span>Pausar/Reproduzir vídeo</span>
+                    </div>
+                </div>
+
+                <div class="tutorial-item">
+                    <div class="tutorial-icone">✊</div>
+                    <div>
+                        <strong>Punho fechado</strong>
+                        <span>Abrir/Fechar chat de usuários</span>
+                    </div>
+                </div>
+
+                <div class="tutorial-item">
+                    <div class="tutorial-icone">✊</div>
+                    <div>
+                        <strong>Punho fechado</strong>
+                        <span>Abrir/Fechar chat de usuários</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="module" src="js/cookies.js"></script>
+    <script type="module" src="js/firebase-service.js"></script>
+    <script type="module" src="js/pedria-core.js"></script>
+    <script type="module" src="js/voice-intent.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="js/chatbot.js"></script>
+    <script type="module" src="js/user-chat-widget.js"></script>
+    <script>
+        // Fallback: Inicializar widget do chat manualmente
+        document.addEventListener('DOMContentLoaded', function() {
+            const widget = document.getElementById('user-chat-widget');
+            const toggle = document.getElementById('user-chat-toggle');
+            const closeBtn = document.getElementById('user-chat-close');
+            const panel = document.getElementById('user-chat-panel');
+            
+            if (widget && toggle && panel) {
+                // Adicionar classe para garantir que funciona
+                widget.classList.start = widget.classList.add('inicializado');
+                
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const isOpen = widget.classList.contains('open');
+                    widget.classList.toggle('open', !isOpen);
+                    panel.setAttribute('aria-hidden', String(isOpen));
+                    document.body.style.marginRight = isOpen ? '0' : '360px';
+                });
+                
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        widget.classList.remove('open');
+                        panel.setAttribute('aria-hidden', 'true');
+                        document.body.style.marginRight = '0';
+                    });
+                }
+            }
+        });
+    </script>
+    <script type="module" src="js/analytics.js"></script>
+    <script type="module" src="js/voz.js"></script>
+    <script type="module" src="js/gestos-global.js"></script>
+
+    <script type="module" src="js/topbar.js"></script>
+</body>
+</html>
